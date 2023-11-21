@@ -1,4 +1,4 @@
-package Modelo;
+package Model;
 
 public class Vehic {
     private static String placa, id, tipo, rol;
