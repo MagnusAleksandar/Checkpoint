@@ -24,9 +24,10 @@ public class Edificio {
     private static VAlert_noIndiv vni = new VAlert_noIndiv();
     private static VAlert_noTienV ntnv = new VAlert_noTienV();
     
-    private static ArrayList<Vehic> arrvn = new ArrayList<>();
-   // private static ArrayList<Vehic> arrvn = new ArrayList<>();
+    //Hi :v
+    
     private static ArrayList<Vehic> arrve = new ArrayList<>();
+    private static ArrayList<Vehic> arrvn = new ArrayList<>();
     private static ArrayList<Indiv> arrin = new ArrayList<>();
     private static ArrayList<Indiv> arrie = new ArrayList<>();
     
