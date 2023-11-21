@@ -14,7 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.crypto.AEADBadTagException;
 import javax.swing.DefaultListModel;
-
+//aqui toy
 public class Edificio {
     private static VIAlready via = new VIAlready();
     private static VAlreadyV vav = new VAlreadyV();
