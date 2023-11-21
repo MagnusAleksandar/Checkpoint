@@ -4,7 +4,6 @@ import Model.Edificio;
 import Model.Indiv;
 import View.VOut;
 import View.VAlert_noVehi;
-import View.VAlert_vehiNoAut;
 import View.VIDNoValid;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,13 +11,11 @@ import java.awt.event.ActionListener;
 public class CtlVout implements ActionListener {
     private VOut vout;
     private VAlert_noVehi vnveh;
-    private VAlert_vehiNoAut vnaut;
     private VIDNoValid vnv;
 
-    public CtlVout(VOut vout, VAlert_noVehi vnveh, VAlert_vehiNoAut vnaut, VIDNoValid vnv) {
+    public CtlVout(VOut vout, VAlert_noVehi vnveh, VIDNoValid vnv) {
         this.vout = vout;
         this.vnveh = vnveh;
-        this.vnaut = vnaut;
         this.vnv = vnv;
 
         this.vout.salBtn.addActionListener(this);
@@ -47,7 +44,7 @@ public class CtlVout implements ActionListener {
                     if (fnd)
                         Edificio.salVeh(id, placa);
                     else
-                        vnaut.setVisible(true);
+                        vnveh.setVisible(true);
                 }
                 vout.dispose();
             } else
