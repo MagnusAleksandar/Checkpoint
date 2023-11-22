@@ -3,8 +3,8 @@ package ViewCont;
 import Model.Edificio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import View.VInicial;
-import View.VSalio;
+import View.VIn;
+import View.VOut;
 import View.VCerrado;
 import View.VNoEntry;
 import View.VAlert_noVacio;
@@ -13,8 +13,8 @@ import View.VRep;
 import View.VNoEntryYet;
 
 public class CtlPrn implements ActionListener {
-    private VInicial in;
-    private VSalio out;
+    private VIn vin;
+    private VOut out;
     private VPrincipal pr;
     private VAlert_noVacio nv;
     private VCerrado vc;
@@ -22,8 +22,8 @@ public class CtlPrn implements ActionListener {
     private VRep vr;
     private VNoEntryYet ney;
 
-    public CtlPrn(VInicial in, VSalio out, VPrincipal pr, VAlert_noVacio nv, VCerrado vc, VNoEntry vne, VRep vr, VNoEntryYet ney) {
-        this.in = in;
+    public CtlPrn(VIn vin, VOut out, VPrincipal pr, VAlert_noVacio nv, VCerrado vc, VNoEntry vne, VRep vr, VNoEntryYet ney) {
+        this.vin = vin;
         this.out = out;
         this.pr = pr;
         this.nv = nv;
@@ -41,7 +41,7 @@ public class CtlPrn implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(pr.entBtn))
-            in.setVisible(true);
+            vin.setVisible(true);
         else if (e.getSource().equals(pr.cerrBtn))
             if (Edificio.noHayGente())
                 vc.setVisible(true);
@@ -49,13 +49,11 @@ public class CtlPrn implements ActionListener {
                 nv.setVisible(true);
         else if (e.getSource().equals(pr.salBtn)) {
             Edificio.show();
-            if (Edificio.noHayGente())
+            if (Edificio.noHayAdmon())
                 vne.setVisible(true);
             else
-                out.setVisible(true);
-            
-        }else if (e.getSource().equals(pr.reprBtn)) {
-            vr.setVisible(true);
-        }
+                out.setVisible(true);            
+        }else if (e.getSource().equals(pr.reprBtn)) 
+            Edificio.reporteEntSal();
     }
 }

@@ -28,13 +28,18 @@ public class VTipoUs extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        placaTxt = new javax.swing.JTextField();
+        idTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         ingBtn = new javax.swing.JButton();
         resetBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         regBtn = new javax.swing.JButton();
         rolUSlider = new javax.swing.JComboBox<>();
+        tipoEntrada = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        permEspTxt = new javax.swing.JLabel();
+        selSi = new javax.swing.JRadioButton();
+        selNo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,9 +50,9 @@ public class VTipoUs extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(200, 200, 200));
         jLabel2.setText("Documento de identidad:");
 
-        placaTxt.addActionListener(new java.awt.event.ActionListener() {
+        idTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placaTxtActionPerformed(evt);
+                idTxtActionPerformed(evt);
             }
         });
 
@@ -76,8 +81,33 @@ public class VTipoUs extends javax.swing.JFrame {
             }
         });
 
-        rolUSlider.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Administrativo", "Docente", "Estudiante", "Vigilante" }));
+        rolUSlider.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Administrativo", "Docente", "Estudiante", "Vigilante", "Visitante" }));
         rolUSlider.setToolTipText("");
+
+        tipoEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Puerta 1", "Puerta 2", "Puerta 3", "Puerta 4", "Puerta 5" }));
+
+        jLabel5.setForeground(new java.awt.Color(200, 200, 200));
+        jLabel5.setText("Puerta de ingreso:");
+
+        permEspTxt.setForeground(new java.awt.Color(200, 200, 200));
+        permEspTxt.setText("¿Tiene permisos especiales?");
+        permEspTxt.setEnabled(false);
+
+        selSi.setText("Sí");
+        selSi.setEnabled(false);
+        selSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selSiActionPerformed(evt);
+            }
+        });
+
+        selNo.setText("No");
+        selNo.setEnabled(false);
+        selNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selNoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,22 +115,29 @@ public class VTipoUs extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(placaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rolUSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(resetBtn)
-                        .addGap(42, 42, 42)
+                        .addGap(46, 46, 46)
                         .addComponent(ingBtn)
-                        .addGap(48, 48, 48)
-                        .addComponent(regBtn)))
+                        .addGap(44, 44, 44)
+                        .addComponent(regBtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(permEspTxt))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(selSi)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selNo))
+                            .addComponent(rolUSlider, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tipoEntrada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(idTxt))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,20 +145,32 @@ public class VTipoUs extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(rolUSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(placaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resetBtn)
-                    .addComponent(ingBtn)
-                    .addComponent(regBtn))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(resetBtn)
+                            .addComponent(ingBtn)
+                            .addComponent(regBtn)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(selNo)
+                            .addComponent(selSi)
+                            .addComponent(permEspTxt))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,19 +181,29 @@ public class VTipoUs extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void placaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placaTxtActionPerformed
+    private void idTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_placaTxtActionPerformed
+    }//GEN-LAST:event_idTxtActionPerformed
 
     private void regBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regBtnActionPerformed
+
+    private void selSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selSiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selSiActionPerformed
+
+    private void selNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selNoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,14 +304,19 @@ public class VTipoUs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField idTxt;
     public javax.swing.JButton ingBtn;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
     public javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField placaTxt;
+    public javax.swing.JLabel permEspTxt;
     public javax.swing.JButton regBtn;
     public javax.swing.JButton resetBtn;
     public javax.swing.JComboBox<String> rolUSlider;
+    public javax.swing.JRadioButton selNo;
+    public javax.swing.JRadioButton selSi;
+    public javax.swing.JComboBox<String> tipoEntrada;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,6 +52,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Seleccione una opción.");
 
         entBtn.setText("Entrar");
+        entBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entBtnActionPerformed(evt);
+            }
+        });
 
         salBtn.setText("Salir");
         salBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +137,10 @@ public class VPrincipal extends javax.swing.JFrame {
     private void reprBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reprBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_reprBtnActionPerformed
+
+    private void entBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_entBtnActionPerformed
 
     /**
      * @param args the command line arguments

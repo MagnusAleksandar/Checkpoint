@@ -1,50 +1,48 @@
 package ViewCont;
 
-import View.VIn;
+import View.VOut;
 import View.VTipoVeh;
-import View.VTipoUs;
 import View.VPermEsp;
+import View.VTipoUsSal;
+import View.VTipoVehSal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
-public class CtlVin implements ActionListener {
-    private VIn vin;
-    private VTipoVeh vtv;
-    private VTipoUs vtu;
+public class CtlVOut implements ActionListener {
+    private VOut vout;
+    private VTipoVehSal vtvs;
+    private VTipoUsSal vtus;
     private VPermEsp vpesp;
 
-    public CtlVin(VIn vin, VTipoVeh vtv, VTipoUs vtu, VPermEsp vpesp) {
-        this.vin = vin;
-        this.vtv = vtv;
-        this.vtu = vtu;
+    public CtlVOut(VOut vout, VTipoVehSal vtvs, VTipoUsSal vtus, VPermEsp vpesp) {
+        this.vout = vout;
+        this.vtvs = vtvs;
+        this.vtus = vtus;
         this.vpesp = vpesp;
 
-        this.vin.ingBtn.addActionListener(this);
-        this.vin.resetBtn.addActionListener(this);
-        this.vin.selPeaton.addActionListener(this);
-        this.vin.selVehi.addActionListener(this);
+        this.vout.ingBtn.addActionListener(this);
+        this.vout.resetBtn.addActionListener(this);
+        this.vout.selPeaton.addActionListener(this);
+        this.vout.selVehi.addActionListener(this);
     }
 
     public void limpiar() {
-        vin.selPeaton.setSelected(false);
-        vin.selVehi.setSelected(false);
+        vout.selPeaton.setSelected(false);
+        vout.selVehi.setSelected(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(vin.ingBtn)) {
-            if(vin.selPeaton.isSelected()){
-                vtu.setVisible(true);
-                vin.dispose();
-            }
-            else if(vin.selVehi.isSelected()){
-                vtv.setVisible(true);
-                vin.dispose();
-            }
-            else vpesp.setVisible(true);
+        if (e.getSource().equals(vout.ingBtn)) {
+            if(vout.selPeaton.isSelected()){
+                vtus.setVisible(true);
+                vout.dispose();
+            }else if(vout.selVehi.isSelected()){
+                vtvs.setVisible(true);
+                vout.dispose();
+            }else vpesp.setVisible(true);
         }
-        if (e.getSource().equals(vin.resetBtn))
+        if (e.getSource().equals(vout.resetBtn))
             limpiar();
 
     }

@@ -47,7 +47,7 @@ public class VNoEntryYet extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(200, 200, 200));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("No hay nadie en el edificio en el momento");
+        jLabel2.setText("No ha entrado nadie al edificio hasta el momento.");
 
         acceptBtn.setBackground(new java.awt.Color(60, 63, 65));
         acceptBtn.setForeground(new java.awt.Color(200, 200, 200));

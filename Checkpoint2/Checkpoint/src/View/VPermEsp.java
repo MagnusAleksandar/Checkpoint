@@ -96,6 +96,7 @@ public class VPermEsp extends javax.swing.JFrame {
 
     private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_acceptBtnActionPerformed
 
     /**

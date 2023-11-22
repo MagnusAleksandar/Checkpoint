@@ -1,12 +1,12 @@
 package ViewCont;
 
+import Model.Edificio;
 import View.VIn;
 import View.VTipoVeh;
 import View.VTipoUs;
 import View.VPermEsp;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
 public class CtlVin implements ActionListener {
     private VIn vin;
@@ -37,8 +37,7 @@ public class CtlVin implements ActionListener {
             if(vin.selPeaton.isSelected()){
                 vtu.setVisible(true);
                 vin.dispose();
-            }
-            else if(vin.selVehi.isSelected()){
+            }else if(vin.selVehi.isSelected()){
                 vtv.setVisible(true);
                 vin.dispose();
             }

@@ -1,28 +1,16 @@
 package Model;
 
 import java.util.ArrayList;
-import View.VIAlready;
-import View.VAlreadyV;
-import View.VAccepted;
-import View.VSalio;
-import View.VAlert_vehiEquiv;
-import View.VAlert_noIndiv;
-import View.VAlert_noTienV;
-import View.VAlert_noVehi;
-import View.VSecurityLock;
-import View.VTabReporte;
+import View.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.crypto.AEADBadTagException;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class Edificio {
-    private static VIAlready via = new VIAlready();
+    private static VAlreadyU via = new VAlreadyU();
     private static VAlreadyV vav = new VAlreadyV();
     private static VAccepted va = new VAccepted();
     private static VSalio vs = new VSalio();
@@ -31,6 +19,8 @@ public class Edificio {
     private static VAlert_noTienV ntnv = new VAlert_noTienV();
     private static VAlert_noVehi vnv = new VAlert_noVehi();
     private static VSecurityLock vsl = new VSecurityLock();
+    private static VNoEntryYet ney = new VNoEntryYet();
+    private static VTabReEntSal vtes = new VTabReEntSal();
     
     static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     static String fechaHora = sdf.format(new Date());
@@ -72,12 +62,13 @@ public class Edificio {
                 flagv = true;
         }
         if (!flagi && !flagv) {
-            if(rol=="visit"){
-                Indiv i = new Indiv();
-                i.setId(id);
-                i.setRol(rol);
+            Indiv i = new Indiv();
+            i.setId(id);
+            i.setRol(rol);
+            if(rol=="Visitante"||rol=="noPerm")
                 arrin.add(i);
-            }
+            else
+                arrie.add(i);
             va.setVisible(true);
         } else if (flagi)
             via.setVisible(true);
@@ -118,8 +109,11 @@ public class Edificio {
     }
     
     public static void alrtSalida(String salida, String id, String placa){
-        char numSal=salida.charAt(4);
+        char numSal=salida.charAt(salida.length()-1);
         String alert="";
+        
+        if(placa==null)
+            placa="";
         
         switch (numSal){
             case '1':
@@ -169,8 +163,11 @@ public class Edificio {
     }
     
     public static void alrtEntrda(String entrada, String id, String placa){
-        char numSal=entrada.charAt(3);
+        char numSal=entrada.charAt(entrada.length()-1);
         String alert="";
+        
+        if(placa==null)
+            placa="";
         
         switch (numSal){
             case '1':
@@ -236,108 +233,84 @@ public class Edificio {
     
     public static void addRep(){
         //Inicio entradas
-        allalrts.add("Entradas:\n - Entrada 1:");
+        allalrts.add("Entradas:\n - Entrada 1:\n");
         for(String alrt:alrtent1)
             allalrts.add(alrt);
-        allalrts.add(" - Entrada 2:");
+        allalrts.add("\n - Entrada 2:\n");
         for(String alrt:alrtent2)
             allalrts.add(alrt);
-        allalrts.add(" - Entrada 3:");
+        allalrts.add("\n - Entrada 3:\n");
         for(String alrt:alrtent3)
             allalrts.add(alrt);
-        allalrts.add(" - Entrada 4:");
+        allalrts.add("\n - Entrada 4:\n");
         for(String alrt:alrtent4)
             allalrts.add(alrt);
-        allalrts.add(" - Entrada 5:");
+        allalrts.add("\n - Entrada 5:\n");
         for(String alrt:alrtent5)
             allalrts.add(alrt);
         
         //Fin entradas e inicio salidas
-        allalrts.add("Salidas:\n - Salida 1:");
+        allalrts.add("\nSalidas:\n - Salida 1:\n");
         for(String alrt:alrtsal1)
             allalrts.add(alrt);
-        allalrts.add(" - Salida 2:");
+        allalrts.add("\n - Salida 2:\n");
         for(String alrt:alrtsal2)
             allalrts.add(alrt);
-        allalrts.add(" - Salida 3:");
+        allalrts.add("\n - Salida 3:\n");
         for(String alrt:alrtsal3)
             allalrts.add(alrt);
-        allalrts.add(" - Salida 4:");
+        allalrts.add("\n - Salida 4:\n");
         for(String alrt:alrtsal4)
             allalrts.add(alrt);
-        allalrts.add(" - Salida 5:");
+        allalrts.add("\n - Salida 5:\n");
         for(String alrt:alrtsal5)
             allalrts.add(alrt);
         
         //Fin salidas e inicio alertas de seguridad
-        allalrts.add("Alertas de seguridad:\n");
+        allalrts.add("\nAlertas de seguridad:\n");
         for(String alrt:alrtseg)
             allalrts.add(alrt);
     }
     
-    public static void reporte (String que){
-        char num=que.charAt(4);
-        String qu=que.substring(0, 3);  
-        
-        switch (qu){
-            case "rent":
-                switch (num){
-                    case '1':
-                        for(String alrt:alrtent1)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '2':
-                        for(String alrt:alrtent2)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '3':
-                        for(String alrt:alrtent3)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '4':
-                        for(String alrt:alrtent4)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '5':
-                        for(String alrt:alrtent5)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    default:
-                        System.out.println("ké (ent)");
-                        System.exit(1);
-                }
-                break;
-            case "rsal":
-                switch (num){
-                    case '1':
-                        for(String alrt:alrtsal1)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '2':
-                        for(String alrt:alrtsal2)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '3':
-                        for(String alrt:alrtsal3)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '4':
-                        for(String alrt:alrtsal4)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    case '5':
-                        for(String alrt:alrtsal5)
-                            VTabReporte.listModel.addElement(alrt);
-                        break;
-                    default:
-                        System.out.println("ké (sal)");
-                        System.exit(1);
-                }
-                break;
-            default:
-                System.out.println("No hay");
-                break;
+    public static void reporteEntSal (){
+        if(alrtent1.isEmpty()&&alrtent2.isEmpty()&&alrtent3.isEmpty()&&alrtent4.isEmpty()&&alrtent5.isEmpty())
+            ney.setVisible(true);
+        else{
+            ArrayList<String> alrtent =new ArrayList<>();
+            ArrayList<String> alrtsal =new ArrayList<>();
+            
+            //Entradas
+            for(String alrt:alrtent1)
+                alrtent.add(alrt);
+            for(String alrt:alrtent2)
+                alrtent.add(alrt);
+            for(String alrt:alrtent3)
+                alrtent.add(alrt);
+            for(String alrt:alrtent4)
+                alrtent.add(alrt);
+            for(String alrt:alrtent5)
+                alrtent.add(alrt);
+            
+            //Salidas
+            for(String alrt:alrtsal1)
+                alrtsal.add(alrt);
+            for(String alrt:alrtsal2)
+                alrtsal.add(alrt);
+            for(String alrt:alrtsal3)
+                alrtsal.add(alrt);
+            for(String alrt:alrtsal4)
+                alrtsal.add(alrt);
+            for(String alrt:alrtsal5)
+                alrtsal.add(alrt);
+            
+            VTabReEntSal.tableModel.addColumn("Entradas", alrtent.toArray());
+            VTabReEntSal.tableModel.addColumn("Salidas", alrtsal.toArray());
         }
+    }
+    
+    public static void reporte2 (){
+        for(String alrt:alrtseg)
+            VTabReAlert.listModel.addElement(alrt);
     }
 
     public static boolean buscar(String id, String placa) {
@@ -362,6 +335,13 @@ public class Edificio {
         else
             return false;
     }
+    
+    public static boolean noHayAdmon(){
+        if(arrin.isEmpty() && arrvn.isEmpty()&&arrie.isEmpty()&&arrve.isEmpty())
+            return true;
+        else
+            return false;
+    }
 
     public static boolean indF(String id) {
         boolean found = false;
@@ -381,7 +361,7 @@ public class Edificio {
         return found;
     }
 
-    public static void salVeh(String id, String placa) {
+    public static void salVeh(String id, String placa, String salida) {
         boolean notV = true, wrV = false;
         
         
@@ -410,8 +390,9 @@ public class Edificio {
         }
         else if (wrV){
             wv.setVisible(true);
+            verif();
             alrtseg.add("Un usuario intentó salir con un vehiculo que no le pertenece. Fecha y hora: "+fechaHora);
-        }
+        }else alrtSalida(salida, id, placa);
     }
     
     public static void verif(){
@@ -433,7 +414,7 @@ public class Edificio {
         }
     }
 
-    public static void salPeat(String id) {
+    public static void salPeat(String id, String salida) {
         boolean noTa=true;
         for (Indiv ind:arrie)
             if (id.equalsIgnoreCase(ind.getId())) {
@@ -451,8 +432,11 @@ public class Edificio {
             }
         if(noTa){
             vni.setVisible(true);
+            verif();
             alrtseg.add("Un ususario que no existe intentó salir.. Fecha y hora: "+fechaHora);
-        }
+        }else
+            alrtSalida(salida, id, null);
+
     }
 
     public static void show() {

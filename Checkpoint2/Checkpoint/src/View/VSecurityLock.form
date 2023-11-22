@@ -51,15 +51,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jLabel1" alignment="1" pref="400" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel2" pref="388" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel3" pref="388" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel2" alignment="1" pref="388" max="32767" attributes="0"/>
+                      <Component id="jLabel3" pref="388" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -164,6 +159,9 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtClave">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
