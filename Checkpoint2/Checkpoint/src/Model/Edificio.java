@@ -8,12 +8,18 @@ import View.VSalio;
 import View.VAlert_vehiEquiv;
 import View.VAlert_noIndiv;
 import View.VAlert_noTienV;
+import View.VAlert_noVehi;
+import View.VSecurityLock;
 import View.VTabReporte;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.crypto.AEADBadTagException;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Edificio {
     private static VIAlready via = new VIAlready();
@@ -23,8 +29,11 @@ public class Edificio {
     private static VAlert_vehiEquiv wv = new VAlert_vehiEquiv();
     private static VAlert_noIndiv vni = new VAlert_noIndiv();
     private static VAlert_noTienV ntnv = new VAlert_noTienV();
+    private static VAlert_noVehi vnv = new VAlert_noVehi();
+    private static VSecurityLock vsl = new VSecurityLock();
     
-    //Hi :v v:
+    static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    static String fechaHora = sdf.format(new Date());
     
     private static ArrayList<Vehic> arrve = new ArrayList<>();
     private static ArrayList<Vehic> arrvn = new ArrayList<>();
@@ -42,6 +51,7 @@ public class Edificio {
     private static ArrayList<String> alrtent3 = new ArrayList<>();
     private static ArrayList<String> alrtent4 = new ArrayList<>();
     private static ArrayList<String> alrtent5 = new ArrayList<>();
+    private static ArrayList<String> alrtseg = new ArrayList<>();
     
     public static void ingPeat(String id, String rol) {
         boolean flagi = false, flagv = false;
@@ -62,18 +72,19 @@ public class Edificio {
                 flagv = true;
         }
         if (!flagi && !flagv) {
-            
-            Indiv i = new Indiv();
-            i.setId(id);
-            i.setRol(rol);
-            //arri.add(i);
+            if(rol=="visit"){
+                Indiv i = new Indiv();
+                i.setId(id);
+                i.setRol(rol);
+                arrin.add(i);
+            }
             va.setVisible(true);
         } else if (flagi)
             via.setVisible(true);
         else if (flagv)
             vav.setVisible(true);
     }
-
+    
     public static void ingVeh(String id, String placa, String rol) {
         boolean flagv = false, flagi = false;
         for (Vehic vehic : arrvn) {
@@ -115,7 +126,7 @@ public class Edificio {
                 alert.concat("Salió el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat("por la salida 1.");
+                alert.concat("por la salida 1.Fecha y hora: "+fechaHora);
                 alrtsal1.add(alert);
                 alert="";
                 break;
@@ -123,7 +134,7 @@ public class Edificio {
                 alert.concat("Salió el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat("por la salida 2.");
+                alert.concat("por la salida 2.Fecha y hora: "+fechaHora);
                 alrtsal2.add(alert);
                 alert="";
                 break;
@@ -131,7 +142,7 @@ public class Edificio {
                 alert.concat("Salió el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat("por la salida 3.");
+                alert.concat("por la salida 3.Fecha y hora: "+fechaHora);
                 alrtsal3.add(alert);
                 alert="";
                 break;
@@ -139,7 +150,7 @@ public class Edificio {
                 alert.concat("Salió el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat("por la salida 4.");
+                alert.concat("por la salida 4.Fecha y hora: "+fechaHora);
                 alrtsal4.add(alert);
                 alert="";
                 break;
@@ -147,7 +158,7 @@ public class Edificio {
                 alert.concat("Salió el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat("por la salida 5.");
+                alert.concat("por la salida 5.Fecha y hora: "+fechaHora);
                 alrtsal5.add(alert);
                 alert="";
                 break;
@@ -156,8 +167,6 @@ public class Edificio {
                 break;
         }
     }
-    
-    
     
     public static void alrtEntrda(String entrada, String id, String placa){
         char numSal=entrada.charAt(3);
@@ -168,7 +177,7 @@ public class Edificio {
                 alert.concat("Ingresó el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat(" por la entrada 1.");
+                alert.concat(" por la entrada 1. Fecha y hora: "+fechaHora);
                 alrtent1.add(alert);
                 alert="";
                 break;
@@ -176,7 +185,7 @@ public class Edificio {
                 alert.concat("Ingresó el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat(" por la entrada 2.");
+                alert.concat(" por la entrada 2. Fecha y hora: "+fechaHora);
                 alrtent2.add(alert);
                 alert="";
                 break;
@@ -184,7 +193,7 @@ public class Edificio {
                 alert.concat("Ingresó el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat(" por la entrada 3.");
+                alert.concat(" por la entrada 3. Fecha y hora: "+fechaHora);
                 alrtent3.add(alert);
                 alert="";
                 break;
@@ -192,7 +201,7 @@ public class Edificio {
                 alert.concat("Ingresó el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat(" por la entrada 4.");
+                alert.concat(" por la entrada 4. Fecha y hora: "+fechaHora);
                 alrtent4.add(alert);
                 alert="";
                 break;
@@ -200,7 +209,7 @@ public class Edificio {
                 alert.concat("Ingresó el usuario "+ id);
                 if(!placa.isEmpty())
                     alert.concat(" en el vehículo "+placa);
-                alert.concat(" por la entrada 5.");
+                alert.concat(" por la entrada 5. Fecha y hora: "+fechaHora);
                 alrtent5.add(alert);
                 alert="";
                 break;
@@ -210,10 +219,11 @@ public class Edificio {
         }
     }
     
+    
+    
     public static void reporteFinal (){
         File file = new File("reporte.txt"); 
         addRep();
-        
         try{
             FileWriter fileW = new FileWriter(file);
             for(String alrt:allalrts)
@@ -257,6 +267,11 @@ public class Edificio {
             allalrts.add(alrt);
         allalrts.add(" - Salida 5:");
         for(String alrt:alrtsal5)
+            allalrts.add(alrt);
+        
+        //Fin salidas e inicio alertas de seguridad
+        allalrts.add("Alertas de seguridad:\n");
+        for(String alrt:alrtseg)
             allalrts.add(alrt);
     }
     
@@ -367,49 +382,77 @@ public class Edificio {
     }
 
     public static void salVeh(String id, String placa) {
-        boolean notV = false, wrV = false;
+        boolean notV = true, wrV = false;
+        
+        
         for (Vehic veh:arrve) {
-            if (id.equalsIgnoreCase(veh.getId()) && placa.isEmpty()) {
-                notV = true;
-                break;
-            } else if (id.equalsIgnoreCase(veh.getId()) && placa.equalsIgnoreCase(veh.getPlaca())) {
+            if (id.equalsIgnoreCase(veh.getId()) && placa.equalsIgnoreCase(veh.getPlaca())) {
                 vs.setVisible(true);
                 arrve.remove(veh);
+                notV = false;
                 break;
-            } else if (id.equalsIgnoreCase(veh.getId()) && !placa.equalsIgnoreCase(veh.getPlaca()))
+            } else if (id.equalsIgnoreCase(veh.getId()) && !placa.equalsIgnoreCase(veh.getPlaca())||placa.equalsIgnoreCase(veh.getPlaca())&&!id.equalsIgnoreCase(veh.getId()))
                 wrV = true;
         }
         for (Vehic veh:arrvn) {
-            if (id.equalsIgnoreCase(veh.getId()) && placa.isEmpty()) {
-                notV = true;
-                break;
-            } else if (id.equalsIgnoreCase(veh.getId()) && placa.equalsIgnoreCase(veh.getPlaca())) {
+            if (id.equalsIgnoreCase(veh.getId()) && placa.equalsIgnoreCase(veh.getPlaca())) {
                 vs.setVisible(true);
                 arrvn.remove(veh);
+                notV = false;
                 break;
-            } else if (id.equalsIgnoreCase(veh.getId()) && !placa.equalsIgnoreCase(veh.getPlaca()))
+            } else if (id.equalsIgnoreCase(veh.getId()) && !placa.equalsIgnoreCase(veh.getPlaca())||placa.equalsIgnoreCase(veh.getPlaca())&&!id.equalsIgnoreCase(veh.getId()))
                 wrV = true;
         }
-        if (notV)
+        if (notV){
             ntnv.setVisible(true);
-        else if (wrV)
+            verif();
+            alrtseg.add("Un usuario que no tiene vehículo intentó salir por la salida vehicular. Fecha y hora: "+fechaHora);
+        }
+        else if (wrV){
             wv.setVisible(true);
+            alrtseg.add("Un usuario intentó salir con un vehiculo que no le pertenece. Fecha y hora: "+fechaHora);
+        }
+    }
+    
+    public static void verif(){
+        String cont="123456";
+        vsl.setVisible(true);
+        if(vsl.txtClave.getText().equals(cont))
+            vsl.dispose();
+        else {
+            int c=1;
+            do{
+                JOptionPane.showMessageDialog(null, "Contraseña incorrecta. Le quedan "+(4-c)+" intentos.");
+                c++;
+            }while(c<4);
+            if(c==3){
+                alrtseg.add("El sistema se cerró por exceso de intentos. Fecha y hora: "+fechaHora);
+                reporteFinal();
+                System.exit(0);
+            }
+        }
     }
 
     public static void salPeat(String id) {
+        boolean noTa=true;
         for (Indiv ind:arrie)
             if (id.equalsIgnoreCase(ind.getId())) {
                 vs.setVisible(true);
                 arrie.remove(ind);
+                noTa=false;
                 break;
             }
         for (Indiv ind:arrin)
             if (id.equalsIgnoreCase(ind.getId())) {
                 vs.setVisible(true);
                 arrin.remove(ind);
+                noTa=false;
                 break;
             }
-        
+        if(noTa){
+            vni.setVisible(true);
+            alrtseg.add("Un ususario que no existe intentó salir.. Fecha y hora: "+fechaHora);
+        }
     }
 
     public static void show() {
