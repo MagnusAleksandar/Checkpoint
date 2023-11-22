@@ -8,12 +8,12 @@ package View;
  *
  * @author alxev
  */
-public class VIn extends javax.swing.JFrame {
+public class VTipoUs extends javax.swing.JFrame {
 
     /**
      * Creates new form Most
      */
-    public VIn() {
+    public VTipoUs() {
         initComponents();
     }
 
@@ -26,29 +26,35 @@ public class VIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rolUSlider = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        placaTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         ingBtn = new javax.swing.JButton();
         resetBtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        selPeaton = new javax.swing.JRadioButton();
-        selVehi = new javax.swing.JRadioButton();
-        tipoEntrada = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-
-        rolUSlider.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Administrativo", "Docente", "Estudiante", "Vigilante" }));
-        rolUSlider.setToolTipText("");
+        regBtn = new javax.swing.JButton();
+        rolUSlider = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(60, 63, 64));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setEnabled(false);
+
+        jLabel2.setForeground(new java.awt.Color(200, 200, 200));
+        jLabel2.setText("Documento de identidad:");
+
+        placaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placaTxtActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(200, 200, 200));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Entrada");
+        jLabel3.setText("Entrada peatonal");
 
         ingBtn.setBackground(new java.awt.Color(60, 63, 65));
         ingBtn.setForeground(new java.awt.Color(200, 200, 200));
@@ -58,68 +64,64 @@ public class VIn extends javax.swing.JFrame {
         resetBtn.setForeground(new java.awt.Color(200, 200, 200));
         resetBtn.setText("Limpiar");
 
-        jLabel2.setForeground(new java.awt.Color(200, 200, 200));
-        jLabel2.setText("Seleccione tipo de entrada:");
-
-        selPeaton.setText("Peatonal");
-
-        selVehi.setText("Vehicular");
-        selVehi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        tipoEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Puerta 1", "Puerta 2", "Puerta 3", "Puerta 4", "Puerta 5" }));
-
         jLabel4.setForeground(new java.awt.Color(200, 200, 200));
-        jLabel4.setText("Puerta de ingreso:");
+        jLabel4.setText("Rol del usuario:");
+
+        regBtn.setBackground(new java.awt.Color(60, 63, 65));
+        regBtn.setForeground(new java.awt.Color(200, 200, 200));
+        regBtn.setText("Regresar");
+        regBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regBtnActionPerformed(evt);
+            }
+        });
+
+        rolUSlider.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Administrativo", "Docente", "Estudiante", "Vigilante" }));
+        rolUSlider.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addGap(89, 89, 89)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(resetBtn)
-                            .addGap(42, 42, 42)
-                            .addComponent(ingBtn))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(selVehi)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(selPeaton)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(29, 29, 29)
-                        .addComponent(tipoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(placaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rolUSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(resetBtn)
+                        .addGap(42, 42, 42)
+                        .addComponent(ingBtn)
+                        .addGap(48, 48, 48)
+                        .addComponent(regBtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(selPeaton)
-                        .addGap(18, 18, 18)
-                        .addComponent(selVehi)))
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(77, 77, 77)
+                    .addComponent(jLabel4)
+                    .addComponent(rolUSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(placaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(resetBtn)
-                    .addComponent(ingBtn))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(ingBtn)
+                    .addComponent(regBtn))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,6 +137,14 @@ public class VIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void placaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placaTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placaTxtActionPerformed
+
+    private void regBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,14 +163,62 @@ public class VIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VTipoUs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VTipoUs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VTipoUs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VTipoUs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -181,7 +239,7 @@ public class VIn extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VIn().setVisible(true);
+                new VTipoUs().setVisible(true);
             }
         });
     }
@@ -192,10 +250,9 @@ public class VIn extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
     public javax.swing.JPanel jPanel1;
+    public javax.swing.JTextField placaTxt;
+    public javax.swing.JButton regBtn;
     public javax.swing.JButton resetBtn;
     public javax.swing.JComboBox<String> rolUSlider;
-    public javax.swing.JRadioButton selPeaton;
-    public javax.swing.JRadioButton selVehi;
-    private javax.swing.JComboBox<String> tipoEntrada;
     // End of variables declaration//GEN-END:variables
 }
