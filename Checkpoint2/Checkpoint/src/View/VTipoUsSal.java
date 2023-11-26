@@ -76,7 +76,7 @@ public class VTipoUsSal extends javax.swing.JFrame {
         tipoEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Puerta 1", "Puerta 2", "Puerta 3", "Puerta 4", "Puerta 5" }));
 
         jLabel6.setForeground(new java.awt.Color(200, 200, 200));
-        jLabel6.setText("Puerta de ingreso:");
+        jLabel6.setText("Puerta de salida:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

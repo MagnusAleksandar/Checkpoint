@@ -55,7 +55,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jLabel3" alignment="0" pref="501" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="resetBtn" min="-2" max="-2" attributes="0"/>
@@ -69,15 +69,9 @@
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="permEspTxt" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="selSi" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="selNo" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="rolUSlider" alignment="0" max="32767" attributes="0"/>
                               <Component id="tipoEntrada" alignment="0" max="32767" attributes="0"/>
                               <Component id="idTxt" alignment="0" max="32767" attributes="0"/>
@@ -93,7 +87,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="86" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tipoEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -108,23 +102,11 @@
                       <Component id="idTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="resetBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ingBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="regBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="selNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="selSi" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="permEspTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="resetBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ingBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="regBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="50" max="32767" attributes="0"/>
               </Group>
@@ -225,13 +207,15 @@
         <Component class="javax.swing.JComboBox" name="rolUSlider">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="8">
                 <StringItem index="0" value="[Seleccione uno]"/>
                 <StringItem index="1" value="Administrativo"/>
-                <StringItem index="2" value="Docente"/>
-                <StringItem index="3" value="Estudiante"/>
-                <StringItem index="4" value="Vigilante"/>
-                <StringItem index="5" value="Visitante"/>
+                <StringItem index="2" value="Docente con permisos"/>
+                <StringItem index="3" value="Docente sin permisos"/>
+                <StringItem index="4" value="Estudiante con permisos"/>
+                <StringItem index="5" value="Estudiante sin permisos"/>
+                <StringItem index="6" value="Vigilante"/>
+                <StringItem index="7" value="Visitante"/>
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -266,42 +250,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Puerta de ingreso:"/>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="permEspTxt">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c8" green="c8" red="c8" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xbf;Tiene permisos especiales?"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="selSi">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="S&#xed;"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selSiActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="selNo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="No"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selNoActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

@@ -37,9 +37,6 @@ public class VTipoUs extends javax.swing.JFrame {
         rolUSlider = new javax.swing.JComboBox<>();
         tipoEntrada = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        permEspTxt = new javax.swing.JLabel();
-        selSi = new javax.swing.JRadioButton();
-        selNo = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,7 +78,7 @@ public class VTipoUs extends javax.swing.JFrame {
             }
         });
 
-        rolUSlider.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Administrativo", "Docente", "Estudiante", "Vigilante", "Visitante" }));
+        rolUSlider.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Administrativo", "Docente con permisos", "Docente sin permisos", "Estudiante con permisos", "Estudiante sin permisos", "Vigilante", "Visitante" }));
         rolUSlider.setToolTipText("");
 
         tipoEntrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione uno]", "Puerta 1", "Puerta 2", "Puerta 3", "Puerta 4", "Puerta 5" }));
@@ -89,33 +86,13 @@ public class VTipoUs extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(200, 200, 200));
         jLabel5.setText("Puerta de ingreso:");
 
-        permEspTxt.setForeground(new java.awt.Color(200, 200, 200));
-        permEspTxt.setText("¿Tiene permisos especiales?");
-        permEspTxt.setEnabled(false);
-
-        selSi.setText("Sí");
-        selSi.setEnabled(false);
-        selSi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selSiActionPerformed(evt);
-            }
-        });
-
-        selNo.setText("No");
-        selNo.setEnabled(false);
-        selNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selNoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(resetBtn)
@@ -127,14 +104,9 @@ public class VTipoUs extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(permEspTxt))
+                            .addComponent(jLabel4))
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(selSi)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(selNo))
                             .addComponent(rolUSlider, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tipoEntrada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(idTxt))))
@@ -145,7 +117,7 @@ public class VTipoUs extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -157,19 +129,11 @@ public class VTipoUs extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(resetBtn)
-                            .addComponent(ingBtn)
-                            .addComponent(regBtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(selNo)
-                            .addComponent(selSi)
-                            .addComponent(permEspTxt))))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resetBtn)
+                    .addComponent(ingBtn)
+                    .addComponent(regBtn))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -196,14 +160,6 @@ public class VTipoUs extends javax.swing.JFrame {
     private void regBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regBtnActionPerformed
-
-    private void selSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selSiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selSiActionPerformed
-
-    private void selNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selNoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,12 +267,9 @@ public class VTipoUs extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JPanel jPanel1;
-    public javax.swing.JLabel permEspTxt;
     public javax.swing.JButton regBtn;
     public javax.swing.JButton resetBtn;
     public javax.swing.JComboBox<String> rolUSlider;
-    public javax.swing.JRadioButton selNo;
-    public javax.swing.JRadioButton selSi;
     public javax.swing.JComboBox<String> tipoEntrada;
     // End of variables declaration//GEN-END:variables
 }

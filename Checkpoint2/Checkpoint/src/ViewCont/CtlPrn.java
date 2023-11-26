@@ -19,18 +19,14 @@ public class CtlPrn implements ActionListener {
     private VAlert_noVacio nv;
     private VCerrado vc;
     private VNoEntry vne;
-    private VRep vr;
-    private VNoEntryYet ney;
 
-    public CtlPrn(VIn vin, VOut out, VPrincipal pr, VAlert_noVacio nv, VCerrado vc, VNoEntry vne, VRep vr, VNoEntryYet ney) {
+    public CtlPrn(VIn vin, VOut out, VPrincipal pr, VAlert_noVacio nv, VCerrado vc, VNoEntry vne) {
         this.vin = vin;
         this.out = out;
         this.pr = pr;
         this.nv = nv;
         this.vc = vc;
         this.vne = vne;
-        this.vr = vr;
-        this.ney = ney;
 
         this.pr.entBtn.addActionListener(this);
         this.pr.salBtn.addActionListener(this);
@@ -52,8 +48,8 @@ public class CtlPrn implements ActionListener {
             if (Edificio.noHayAdmon())
                 vne.setVisible(true);
             else
-                out.setVisible(true);            
-        }else if (e.getSource().equals(pr.reprBtn)) 
+                out.setVisible(true);
+        } else if (e.getSource().equals(pr.reprBtn))
             Edificio.reporteEntSal();
     }
 }

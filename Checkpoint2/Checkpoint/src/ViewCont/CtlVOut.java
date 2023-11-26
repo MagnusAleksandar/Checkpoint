@@ -34,13 +34,14 @@ public class CtlVOut implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vout.ingBtn)) {
-            if(vout.selPeaton.isSelected()){
+            if (vout.selPeaton.isSelected() && !vout.selVehi.isSelected()) {
                 vtus.setVisible(true);
                 vout.dispose();
-            }else if(vout.selVehi.isSelected()){
+            } else if (vout.selVehi.isSelected() && !vout.selPeaton.isSelected()) {
                 vtvs.setVisible(true);
                 vout.dispose();
-            }else vpesp.setVisible(true);
+            } else
+                vpesp.setVisible(true);
         }
         if (e.getSource().equals(vout.resetBtn))
             limpiar();

@@ -20,7 +20,7 @@ public class Checkpoint {
         VNoEntry vne = new VNoEntry();
         VTipoVeh vtv = new VTipoVeh();
         VTipoUs vtu = new VTipoUs();
-        VPermEsp vpesp = new VPermEsp();
+        VPermEsp vpe = new VPermEsp();
         VAccepted va = new VAccepted();
         VAlreadyU vu = new VAlreadyU();
         VIDNoValid vid = new VIDNoValid();
@@ -30,13 +30,13 @@ public class Checkpoint {
         VTipoUsSal vtus = new VTipoUsSal();
         VTipoVehSal vtvs = new VTipoVehSal();
 
-        CtlPrn ctp = new CtlPrn(vin, vout, pr, nv, vc, vne, vr, ney);
-        CtlVin cin = new CtlVin(vin, vtv, vtu, vpesp);
-        CtlTipoUs ctu = new CtlTipoUs(va, vu, vpesp, vtu, vid);
-        CtlTipoVeh ctv = new CtlTipoVeh(va, vu, vpesp, vpnv, vtv, vid);
-        CtlSalUs ctsu = new CtlSalUs(vout, vtus, vs, vni, vid, vpesp);
-        CtlSalVeh ctsv = new CtlSalVeh(vout, vtvs, vs, vni, vid, vpnv, vpesp);
-        CtlVOut cto = new CtlVOut(vout, vtvs, vtus, vpesp);
+        CtlPrn ctp = new CtlPrn(vin, vout, pr, nv, vc, vne);
+        CtlVin cin = new CtlVin(vin, vtv, vtu, vpe);
+        CtlTipoUs ctu = new CtlTipoUs(va, vpe, vtu, vid);
+        CtlTipoVeh ctv = new CtlTipoVeh(vpe, vpnv, vtv, vid);
+        CtlSalUs ctsu = new CtlSalUs(vout, vtus, vs, vni, vid, vpe);
+        CtlSalVeh ctsv = new CtlSalVeh(vout, vtvs, vs, vni, vid, vpnv, vpe);
+        CtlVOut cto = new CtlVOut(vout, vtvs, vtus, vpe);
 
         pr.setVisible(true);
     }

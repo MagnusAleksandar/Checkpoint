@@ -16,7 +16,7 @@ public class CtlTipoUs implements ActionListener {
     private VTipoUs vtu;
     private VIDNoValid vid;
 
-    public CtlTipoUs(VAccepted va, VAlreadyU vu, VPermEsp vpe, VTipoUs vtu, VIDNoValid vid) {
+    public CtlTipoUs(VAccepted va, VPermEsp vpe, VTipoUs vtu, VIDNoValid vid) {
         this.va = va;
         this.vu = vu;
         this.vpe = vpe;
@@ -36,35 +36,23 @@ public class CtlTipoUs implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String rol = "";
+        String rol = vtu.rolUSlider.getSelectedItem().toString();
         if (e.getSource().equals(vtu.regBtn))
             vtu.dispose();
         else if (e.getSource().equals(vtu.resetBtn))
             limpiar();
         else if (e.getSource().equals(vtu.ingBtn)) {
-            if (vtu.rolUSlider.getSelectedItem().equals("[Seleccione uno]")
-                    || vtu.tipoEntrada.getSelectedItem().equals("[Seleccione uno]"))
+            if (rol.equals("[Seleccione uno]")
+                    || rol.equals("[Seleccione uno]"))
                 vpe.setVisible(true);
             else if (vtu.idTxt.getText().isEmpty())
                 vid.setVisible(true);
-            else if (!vtu.rolUSlider.getSelectedItem().equals("Docente")
-                    || !vtu.rolUSlider.getSelectedItem().equals("Estudiante"))
-                rol = vtu.rolUSlider.getSelectedItem().toString();
-        } else if (vtu.rolUSlider.getSelectedItem().equals("Docente")
-                || vtu.rolUSlider.getSelectedItem().equals("Estudiante")) {
-            vtu.permEspTxt.setEnabled(true);
-            vtu.selSi.setEnabled(true);
-            vtu.selNo.setEnabled(true);
-            if (vtu.selNo.isSelected())
-                rol = "noPerm";
-            else if (vtu.selSi.isSelected())
-                rol = "perm";
-            else
-                vpe.setVisible(true);
+            else {
+                Edificio.alrtEntrda(vtu.tipoEntrada.getSelectedItem().toString(), vtu.idTxt.getText(), null, rol, null);
+                Edificio.ingPeat(vtu.idTxt.getText(), rol);
+                vtu.dispose();
+            }
         }
-        Edificio.alrtEntrda(rol, vtu.idTxt.getText(), null);
-        Edificio.ingPeat(vtu.idTxt.getText(), rol);
-        vtu.dispose();
 
     }
 

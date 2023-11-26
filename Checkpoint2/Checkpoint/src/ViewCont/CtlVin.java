@@ -34,16 +34,16 @@ public class CtlVin implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(vin.ingBtn)) {
-            if(vin.selPeaton.isSelected()){
+            if (vin.selPeaton.isSelected() && !vin.selVehi.isSelected()) {
                 vtu.setVisible(true);
                 vin.dispose();
-            }else if(vin.selVehi.isSelected()){
+            } else if (vin.selVehi.isSelected() && !vin.selPeaton.isSelected()) {
                 vtv.setVisible(true);
                 vin.dispose();
-            }
-            else vpesp.setVisible(true);
-        }
-        if (e.getSource().equals(vin.resetBtn))
+            } else
+                vpesp.setVisible(true);
+            limpiar();
+        } else if (e.getSource().equals(vin.resetBtn))
             limpiar();
 
     }

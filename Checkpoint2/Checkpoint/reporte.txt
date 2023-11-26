@@ -1,3 +1,14 @@
 Entradas:
- - Entrada 1: - Entrada 2: - Entrada 3: - Entrada 4: - Entrada 5:Salidas:
- - Salida 1: - Salida 2: - Salida 3: - Salida 4: - Salida 5:Alertas de seguridad:
+Ingresó el usuario 101 por la entrada 1. Fecha y hora: 2023-11-22 13:12:20
+
+
+
+
+Salidas:
+
+
+
+
+
+Alertas de seguridad:
+Un ususario que no existe intentó salir. Fecha y hora: 2023-11-22 13:12:20

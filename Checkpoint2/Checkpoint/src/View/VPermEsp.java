@@ -40,7 +40,7 @@ public class VPermEsp extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(200, 200, 200));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ingreso inválido.");
+        jLabel1.setText("Error.");
 
         jLabel2.setBackground(new java.awt.Color(60, 63, 64));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N

@@ -50,6 +50,11 @@ public class VTabReEntSal extends javax.swing.JFrame {
         jLabel3.setText("Registro actividad");
 
         regBtn.setText("Regresar");
+        regBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regBtnActionPerformed(evt);
+            }
+        });
 
         frame.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,7 +66,15 @@ public class VTabReEntSal extends javax.swing.JFrame {
             new String [] {
                 "Entradas", "Salidas"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(frame);
 
         alrtBtn.setText("Mostrar alertas de seguridad");
@@ -119,8 +132,12 @@ public class VTabReEntSal extends javax.swing.JFrame {
     private void alrtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alrtBtnActionPerformed
         // TODO add your handling code here:
         Edificio.reporte2();
-        val.setVisible(true);
     }//GEN-LAST:event_alrtBtnActionPerformed
+
+    private void regBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regBtnActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_regBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,8 +168,6 @@ public class VTabReEntSal extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
-        frame.setModel(tableModel);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
