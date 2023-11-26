@@ -54,9 +54,11 @@ public class CtlSalVeh implements ActionListener{
                 vpnv.setVisible(true);
             else if(vtv.tipoEntrada.getSelectedItem().equals("[Seleccione uno]"))
                 vpe.setVisible(true);
-            else 
+            else {
                 Edificio.salVeh(id, placa, vtv.tipoEntrada.getSelectedItem().toString());
-            
+                limpiar();
+                vtv.dispose();
+            }
         }
     }
     

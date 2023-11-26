@@ -13,7 +13,8 @@ public class Edificio {
     private static VAlreadyV vav = new VAlreadyV(); // Vista para cuando un vehículo ya está adentro
     private static VAccepted va = new VAccepted(); // Vista para cuando un vehículo/individuo logra entrar
     private static VSalio vs = new VSalio(); // Vista para cuando un vehículo/individuo logra salir
-    private static VAlert_vehiEquiv wv = new VAlert_vehiEquiv(); // Vista para cuando alguien va a salir con el vehículo equivocado
+    private static VAlert_vehiEquiv wv = new VAlert_vehiEquiv(); // Vista para cuando alguien va a salir con el vehículo
+                                                                 // equivocado
     private static VAlert_noVehi vanv = new VAlert_noVehi();
     private static VAlert_noIndiv vni = new VAlert_noIndiv(); //
     private static VAlert_noTienV ntnv = new VAlert_noTienV(); // Vista para un individuo que no tiene vehículo
@@ -436,13 +437,17 @@ public class Edificio {
                 wrV = true; // La placa no coincide con el id
         }
         for (Indiv ind : arrie)// Recorre el arreglo de individuos con permisos especiales
-            if (id.equalsIgnoreCase(ind.getId()))
+            if (id.equalsIgnoreCase(ind.getId())) {
                 notV = true; // Encontró el id pero entró por la vehicular
+                wrV = false;
+            }
         for (Indiv ind : arrin)// Recorre el arreglo de individuos sin permisos especiales
-            if (id.equalsIgnoreCase(ind.getId()))
+            if (id.equalsIgnoreCase(ind.getId())) {
                 notV = true;// Encontró el id pero entró por la vehicular
+                wrV = false;
+            }
         if (notV) {
-            ntnv.setVisible(true); // Muestra la vista para cuando encontró el id pero entró por la vehicular
+            vanv.setVisible(true); // Muestra la vista para cuando encontró el id pero entró por la vehicular
             alrtseg.add("Un usuario que no tiene vehículo intentó salir por la salida vehicular. Fecha y hora: "
                     + fechaHora); // Guarda la alerta
         } else if (wrV) {
@@ -475,20 +480,23 @@ public class Edificio {
                 break;
             }
         for (Vehic veh : arrve)// Recorre el arreglo de vehiculos con permisos especiales
-            if (id.equalsIgnoreCase(veh.getId()))
+            if (id.equalsIgnoreCase(veh.getId())) {
                 noInd = true; // Encontró el id pero entró por la peatonal
+                noTa = false;
+            }
         for (Vehic veh : arrvn)// Recorre el arreglo de vehiculos con permisos especiales
-            if (id.equalsIgnoreCase(veh.getId()))
+            if (id.equalsIgnoreCase(veh.getId())) {
                 noInd = true; // Encontró el id pero entró por la peatonal
+                noTa = false;
+            }
 
         if (noTa) {
             vni.setVisible(true);
-            alrtseg.add("Un ususario que no existe intentó salir. Fecha y hora: " + fechaHora);
-        } else if(noInd){
-            vanv.setVisible(true);
+            alrtseg.add("Un usuario que no existe intentó salir. Fecha y hora: " + fechaHora);
+        } else if (noInd) {
+            ntnv.setVisible(true);
             alrtseg.add("Un ususario que no tiene vehículo intentó salir por la peatonal. Fecha y hora: " + fechaHora);
-        }
-        else
+        } else
             alrtSalida(salida, id, null, rol, null);
 
     }

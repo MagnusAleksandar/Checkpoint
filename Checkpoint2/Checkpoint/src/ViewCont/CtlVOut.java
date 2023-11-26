@@ -42,10 +42,11 @@ public class CtlVOut implements ActionListener {
                 vout.dispose();
             } else
                 vpesp.setVisible(true);
+            limpiar();
         }
         if (e.getSource().equals(vout.resetBtn))
             limpiar();
-
+        
     }
 
 }

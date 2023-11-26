@@ -50,6 +50,7 @@ public class CtlTipoUs implements ActionListener {
             else {
                 Edificio.alrtEntrda(vtu.tipoEntrada.getSelectedItem().toString(), vtu.idTxt.getText(), null, rol, null);
                 Edificio.ingPeat(vtu.idTxt.getText(), rol);
+                limpiar();
                 vtu.dispose();
             }
         }
