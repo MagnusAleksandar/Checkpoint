@@ -13,8 +13,8 @@ public class Edificio {
     private static VAlreadyV vav = new VAlreadyV(); // Vista para cuando un vehículo ya está adentro
     private static VAccepted va = new VAccepted(); // Vista para cuando un vehículo/individuo logra entrar
     private static VSalio vs = new VSalio(); // Vista para cuando un vehículo/individuo logra salir
-    private static VAlert_vehiEquiv wv = new VAlert_vehiEquiv(); // Vista para cuando alguien va a salir con el vehículo
-                                                                 // equivocado
+    private static VAlert_vehiEquiv wv = new VAlert_vehiEquiv(); // Vista para cuando alguien va a salir con el vehículo equivocado
+    private static VAlert_noVehi vanv = new VAlert_noVehi();
     private static VAlert_noIndiv vni = new VAlert_noIndiv(); //
     private static VAlert_noTienV ntnv = new VAlert_noTienV(); // Vista para un individuo que no tiene vehículo
     private static VNoEntryYet ney = new VNoEntryYet(); // Vista para cuando no se puede generar reportes porque no ha
@@ -483,10 +483,11 @@ public class Edificio {
 
         if (noTa) {
             vni.setVisible(true);
-            // vsl.setVisible(true);
             alrtseg.add("Un ususario que no existe intentó salir. Fecha y hora: " + fechaHora);
-        } // else if()
-
+        } else if(noInd){
+            vanv.setVisible(true);
+            alrtseg.add("Un ususario que no tiene vehículo intentó salir por la peatonal. Fecha y hora: " + fechaHora);
+        }
         else
             alrtSalida(salida, id, null, rol, null);
 
