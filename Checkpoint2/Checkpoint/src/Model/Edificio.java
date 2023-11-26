@@ -485,7 +485,7 @@ public class Edificio {
             vni.setVisible(true);
             // vsl.setVisible(true);
             alrtseg.add("Un ususario que no existe intentó salir. Fecha y hora: " + fechaHora);
-        } else if()
+        } // else if()
 
         else
             alrtSalida(salida, id, null, rol, null);
