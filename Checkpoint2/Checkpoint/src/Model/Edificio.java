@@ -15,6 +15,7 @@ public class Edificio {
     private static VSalio vs = new VSalio(); // Vista para cuando un vehículo/individuo logra salir
     private static VAlert_vehiEquiv wv = new VAlert_vehiEquiv(); // Vista para cuando alguien va a salir con el vehículo
                                                                  // equivocado
+    private static VCerradoAdm vca = new VCerradoAdm();
     private static VAlert_noVehi vanv = new VAlert_noVehi();
     private static VAlert_noIndiv vni = new VAlert_noIndiv(); //
     private static VAlert_noTienV ntnv = new VAlert_noTienV(); // Vista para un individuo que no tiene vehículo
@@ -517,6 +518,23 @@ public class Edificio {
             System.out.println(ind.getId());
         for (Vehic veh : arrvn)
             System.out.println(veh.getId() + "\t" + veh.getPlaca());
+    }
+
+    public static void cerrarNoEmpty() {
+        String gente = "Peatones: ", vehic = "Con vehículo: ";
+        for (Indiv ind : arrie) {
+            gente = gente.concat(ind.getId());
+            if (arrie.size() > 1)
+                gente = gente.concat(", ");
+        }
+        for (Vehic veh : arrve) {
+            vehic = vehic.concat(veh.getId() + ". Placa o matrícula: " + veh.getPlaca() + ", ");
+            if (arrve.size() > 1)
+                vehic = vehic.concat(", ");
+        }
+        vca.arrTxt.setText(gente);
+        vca.vadmTxt.setText(vehic);
+        vca.setVisible(true);
     }
 
 }

@@ -9,8 +9,6 @@ import View.VCerrado;
 import View.VNoEntry;
 import View.VAlert_noVacio;
 import View.VPrincipal;
-import View.VRep;
-import View.VNoEntryYet;
 
 public class CtlPrn implements ActionListener {
     private VIn vin;
@@ -39,8 +37,10 @@ public class CtlPrn implements ActionListener {
         if (e.getSource().equals(pr.entBtn))
             vin.setVisible(true);
         else if (e.getSource().equals(pr.cerrBtn))
-            if (Edificio.noHayGente())
+            if (Edificio.noHayAdmon())
                 vc.setVisible(true);
+            else if (!Edificio.noHayAdmon() && Edificio.noHayGente())
+                Edificio.cerrarNoEmpty();
             else
                 nv.setVisible(true);
         else if (e.getSource().equals(pr.salBtn)) {
