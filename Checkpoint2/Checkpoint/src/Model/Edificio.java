@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 public class Edificio {
     private static VAlreadyU via = new VAlreadyU(); // Vista para cuando un individuo ya está adentro
     private static VAlreadyV vav = new VAlreadyV(); // Vista para cuando un vehículo ya está adentro
@@ -45,6 +47,7 @@ public class Edificio {
     private static ArrayList<String> alrtent4 = new ArrayList<>();// Alertas para la entrada 4
     private static ArrayList<String> alrtent5 = new ArrayList<>();// Alertas para la entrada 5
     private static ArrayList<String> alrtseg = new ArrayList<>(); // Alertas de seguridad
+    private static ArrayList<String> alrtbloc = new ArrayList<>();
 
     public static void ingPeat(String id, String rol) {
         // Ingreso peatonal
@@ -283,6 +286,8 @@ public class Edificio {
         allalrts.add("Alertas de seguridad:\n");
         for (String alrt : alrtseg)
             allalrts.add(alrt);
+        for (String alrt : alrtbloc)
+            allalrts.add(alrt);
     }
 
     public static void reporteEntSal() {
@@ -344,6 +349,8 @@ public class Edificio {
             ney.setVisible(true);
         else {
             for (String alrt : alrtseg)
+                vtal.listModel.addElement(alrt);
+            for (String alrt : alrtbloc)
                 vtal.listModel.addElement(alrt);
             vtal.listRep.setModel(vtal.listModel);
             vtal.setVisible(true);
@@ -447,15 +454,27 @@ public class Edificio {
                 notV = true;// Encontró el id pero entró por la vehicular
                 wrV = false;
             }
-        if (notV) {
-            vanv.setVisible(true); // Muestra la vista para cuando encontró el id pero entró por la vehicular
-            alrtseg.add("Un usuario que no tiene vehículo intentó salir por la salida vehicular. Fecha y hora: "
-                    + fechaHora); // Guarda la alerta
-        } else if (wrV) {
-            wv.setVisible(true); // Muestra la vista para cuando la placa no coincide con el id
-            alrtseg.add("Un usuario intentó salir con un vehiculo que no le pertenece. Fecha y hora: " + fechaHora);
-        } else // Crea la alerta de salida
-            alrtSalida(salida, id, placa, rol, tipoV);
+        if (!notV && !wrV)
+            alrtSalida(salida, id, placa, rol, tipoV);// Crea la alerta de salida
+        else {
+            if (notV) {
+                vanv.setVisible(true); // Muestra la vista para cuando encontró el id pero entró por la vehicular
+                alrtseg.add(
+                        "Un usuario que no tiene vehículo intentó salir por la salida vehicular por la " + salida
+                                + ". Fecha y hora: "
+                                + fechaHora); // Guarda la alerta
+            } else if (wrV) {
+                wv.setVisible(true); // Muestra la vista para cuando la placa no coincide con el id
+                alrtseg.add("Un usuario intentó salir con un vehiculo que no le pertenecepor la " + salida
+                        + ". Fecha y hora: " + fechaHora);
+            }
+            blocSeg(salida);
+            if (vanv.isVisible())
+                vanv.dispose();
+            else if (wv.isVisible())
+                wv.dispose();
+        }
+
     }
 
     public static void salPeat(String id, String salida) {
@@ -491,21 +510,48 @@ public class Edificio {
                 noTa = false;
             }
 
-        if (noTa) {
-            vni.setVisible(true);
-            alrtseg.add("Un usuario que no existe intentó salir. Fecha y hora: " + fechaHora);
-        } else if (noInd) {
-            ntnv.setVisible(true);
-            alrtseg.add("Un ususario que no tiene vehículo intentó salir por la peatonal. Fecha y hora: " + fechaHora);
-        } else
+        if (!noTa && !noInd)
             alrtSalida(salida, id, null, rol, null);
+        else {
+            if (noTa) {
+                vni.setVisible(true);
+                alrtseg.add(
+                        "Un usuario que no existe intentó salir por la " + salida + ". Fecha y hora: "
+                                + fechaHora);
+            } else if (noInd) {
+                ntnv.setVisible(true);
+                alrtseg.add("Un ususario que no tiene vehículo intentó salir por la peatonal de la " + salida
+                        + ". Fecha y hora: " + fechaHora);
+            }
+            blocSeg(salida);
+            if (vni.isVisible())
+                vni.dispose();
+            else if (ntnv.isVisible())
+                ntnv.dispose();
+        }
 
     }
 
-    public static void blocSeg() { // Lo que se hace cuando hay un bloqueo de seguridad
-        alrtseg.add("El sistema se cerró por exceso de intentos. Fecha y hora: " + fechaHora);
-        reporteFinal();
-        System.exit(0);
+    public static void blocSeg(String puerta) {
+        // Lo que se hace cuando hay un bloqueo de seguridad
+        boolean clear = false;
+        int cont = 1;
+        String alerta = "\nAlerta de seguridad en la " + puerta + ":";
+        do {
+            alrtbloc.add(alerta);
+            alerta = "";
+            String pass = "123456", input = JOptionPane.showInputDialog("Ingrese la contraseña de administrador");
+            if (input.equals(pass)) {
+                alerta = alerta.concat("\nSe ingreso la contraseña de administrador correctamente. Intento " + cont
+                        + ". Fecha y hora: " + fechaHora);
+                alrtbloc.add(alerta);
+                clear = true;
+            } else {
+                alerta = alerta.concat(
+                        "\nIntento de ingreso de contraseña fallido número " + cont + ". Fecha y hora: " + fechaHora);
+                cont++;
+            }
+        } while (!clear);
     }
 
     public static void show() {
@@ -521,6 +567,7 @@ public class Edificio {
     }
 
     public static void cerrarNoEmpty() {
+        // Para cuando se va a cerrar y hay gente con permisos aún adentro
         String gente = "Peatones: ", vehic = "Con vehículo: ";
         for (Indiv ind : arrie) {
             gente = gente.concat(ind.getId());
