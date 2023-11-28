@@ -3,6 +3,7 @@ package App;
 import View.*;
 import ViewCont.*;
 import Model.*;
+import javax.swing.JOptionPane;
 
 public class Checkpoint {
 
@@ -37,7 +38,11 @@ public class Checkpoint {
         CtlSalUs ctsu = new CtlSalUs(vout, vtus, vs, vni, vid, vpe);
         CtlSalVeh ctsv = new CtlSalVeh(vout, vtvs, vs, vni, vid, vpnv, vpe);
         CtlVOut cto = new CtlVOut(vout, vtvs, vtus, vpe);
-
+        String nom = null;
+        do {
+            nom = JOptionPane.showInputDialog("Ingrese el nombre de la universidad");
+        } while (nom.isEmpty());
+        pr.nomIns.setText(nom);
         pr.setVisible(true);
     }
 

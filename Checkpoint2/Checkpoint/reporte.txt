@@ -1,5 +1,6 @@
 Entradas:
-Ingresó el usuario 101 por la entrada 1. Fecha y hora: 2023-11-22 13:12:20
+
+Ingresó el usuario 1012 por la entrada 1. Fecha y hora: 2023-11-28 15:10:06
 
 
 
@@ -11,4 +12,9 @@ Salidas:
 
 
 Alertas de seguridad:
-Un ususario que no existe intentó salir. Fecha y hora: 2023-11-22 13:12:20
+Un usuario que no tiene vehículo intentó salir por la salida vehicular de laPuerta 3. Fecha y hora: 2023-11-28 15:10:062023-11-28 15:10:06
+
+
+Bloqueo de seguridad en la Puerta 3:
+
+Se ingreso la contraseña de administrador correctamente. Intento 1. Fecha y hora: 2023-11-28 15:10:06

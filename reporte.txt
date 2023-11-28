@@ -1,0 +1,23 @@
+Entradas:
+Ingresó el usuario 1012 por la entrada 1. Fecha y hora: 2023-11-27 22:51:20Ingresó el usuario 1012 por la entrada 1. Fecha y hora: 2023-11-27 22:51:20Ingresó el usuario 1023 en el vehículo de placa ath654 por la entrada 1. Fecha y hora: 2023-11-27 22:51:20
+Ingresó el usuario 9874 por la entrada 2. Fecha y hora: 2023-11-27 22:51:20
+
+
+
+Salidas:
+Salió el usuario 9874 por la salida 1. Fecha y hora: 2023-11-27 22:51:20
+
+
+Salió el usuario 1012 por la salida 4. Fecha y hora: 2023-11-27 22:51:20
+Salió el usuario 1023 en el vehículo de placa ath654 por la salida 5. Fecha y hora: 2023-11-27 22:51:20
+Alertas de seguridad:
+Un usuario que no tiene vehículo intentó salir por la salida vehicular de la  por la Puerta 2. Fecha y hora: 2023-11-27 22:51:20
+Un usuario que no tiene vehículo intentó salir por la salida vehicular de la  por la Puerta 1. Fecha y hora: 2023-11-27 22:51:20
+
+Bloqueo de seguridad en la Puerta 2:
+Intento de ingreso de contraseña fallido número 1. Fecha y hora: 2023-11-27 22:51:20
+Intento de ingreso de contraseña fallido número 2. Fecha y hora: 2023-11-27 22:51:20
+Se ingreso la contraseña de administrador correctamente. Intento 3. Fecha y hora: 2023-11-27 22:51:20
+Bloqueo de seguridad en la Puerta 1:
+Intento de ingreso de contraseña fallido número 1. Fecha y hora: 2023-11-27 22:51:20
+Se ingreso la contraseña de administrador correctamente. Intento 2. Fecha y hora: 2023-11-27 22:51:20

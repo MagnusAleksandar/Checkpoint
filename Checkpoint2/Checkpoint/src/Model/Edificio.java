@@ -29,6 +29,8 @@ public class Edificio {
     static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Genera la fecha y hora para los
                                                                                // reportes
     static String fechaHora = sdf.format(new Date());// Convierte fecha y hora a string
+    private static String correo = "alevel.col@gmail.com";
+    private static String asunto = "Alerta de seguridad.";
 
     private static ArrayList<Vehic> arrve = new ArrayList<>();// Vehiculos con permisos epeciales
     private static ArrayList<Vehic> arrvn = new ArrayList<>();// Vehiculos sin permisos epeciales
@@ -145,37 +147,30 @@ public class Edificio {
             else
                 alert = alert.concat(" la bicicleta con matrícula " + placa);
         }
-
+        alert = alert.concat(" por la salida");
         switch (numSal) {
             case '1':
-                alert = alert.concat(" por la salida 1. Fecha y hora: " + fechaHora);
-                alrtsal1.add(alert);
-                alert = "";
+                alert = alert.concat(" 1. ");
                 break;
             case '2':
-                alert = alert.concat(" por la salida 2. Fecha y hora: " + fechaHora);
-                alrtsal2.add(alert);
-                alert = "";
+                alert = alert.concat(" 2. ");
                 break;
             case '3':
-                alert = alert.concat(" por la salida 3. Fecha y hora: " + fechaHora);
-                alrtsal3.add(alert);
-                alert = "";
+                alert = alert.concat(" 3. ");
                 break;
             case '4':
-                alert = alert.concat(" por la salida 4. Fecha y hora: " + fechaHora);
-                alrtsal4.add(alert);
-                alert = "";
+                alert = alert.concat(" 4. ");
                 break;
             case '5':
-                alert = alert.concat(" por la salida 5. Fecha y hora: " + fechaHora);
-                alrtsal5.add(alert);
-                alert = "";
+                alert = alert.concat(" 5. ");
                 break;
             default:
                 System.out.println("T'fuck?"); // En caso de bug :v
                 break;
         }
+        alert = alert.concat(" Fecha y hora: " + fechaHora + "\n");
+        alrtsal2.add(alert);
+        alert = "";
     }
 
     public static void alrtEntrda(String entrada, String id, String placa, String rol, String tipoV) {
@@ -197,37 +192,31 @@ public class Edificio {
             else
                 alert = alert.concat(" la bicicleta con matrícula " + placa);
         }
+        alert = alert.concat(" por la entrada");
 
         switch (numSal) {
             case '1':
-                alert = alert.concat(" por la entrada 1. Fecha y hora: " + fechaHora);
-                alrtent1.add(alert);
-                alert = "";
+                alert = alert.concat(" 1.");
                 break;
             case '2':
-                alert = alert.concat(" por la entrada 2. Fecha y hora: " + fechaHora);
-                alrtent2.add(alert);
-                alert = "";
+                alert = alert.concat(" 2. ");
                 break;
             case '3':
-                alert = alert.concat(" por la entrada 3. Fecha y hora: " + fechaHora);
-                alrtent3.add(alert);
-                alert = "";
+                alert = alert.concat(" 3. ");
                 break;
             case '4':
-                alert = alert.concat(" por la entrada 4. Fecha y hora: " + fechaHora);
-                alrtent4.add(alert);
-                alert = "";
+                alert = alert.concat(" 4. ");
                 break;
             case '5':
-                alert = alert.concat(" por la entrada 5. Fecha y hora: " + fechaHora);
-                alrtent5.add(alert);
-                alert = "";
+                alert = alert.concat(" 5. ");
                 break;
             default:
                 System.out.println("T'fuck?"); // En caso de bug :v
                 break;
         }
+        alert = alert.concat(" Fecha y hora: " + fechaHora + "\n");
+        alrtent2.add(alert);
+        alert = "";
     }
 
     public static void reporteFinal() {
@@ -285,9 +274,9 @@ public class Edificio {
         // Fin salidas e inicio alertas de seguridad
         allalrts.add("Alertas de seguridad:\n");
         for (String alrt : alrtseg)
-            allalrts.add(alrt);
+            allalrts.add(alrt + "\n");
         for (String alrt : alrtbloc)
-            allalrts.add(alrt);
+            allalrts.add(alrt + "\n");
     }
 
     public static void reporteEntSal() {
@@ -417,7 +406,7 @@ public class Edificio {
     public static void salVeh(String id, String placa, String salida) {
         // Salida vehicular
         boolean notV = true, wrV = false;
-        String rol = "", tipoV = "";
+        String rol = "", tipoV = "", alrt = null;
 
         for (Vehic veh : arrve) {// Recorre el arreglo de vehículos con permisos especiales
             if (id.equalsIgnoreCase(veh.getId()) && placa.equalsIgnoreCase(veh.getPlaca())) {
@@ -458,17 +447,15 @@ public class Edificio {
             alrtSalida(salida, id, placa, rol, tipoV);// Crea la alerta de salida
         else {
             if (notV) {
+                alrt = "Un usuario que no tiene vehículo intentó salir por la salida vehicular de la ";
                 vanv.setVisible(true); // Muestra la vista para cuando encontró el id pero entró por la vehicular
-                alrtseg.add(
-                        "Un usuario que no tiene vehículo intentó salir por la salida vehicular por la " + salida
-                                + ". Fecha y hora: "
-                                + fechaHora); // Guarda la alerta
             } else if (wrV) {
                 wv.setVisible(true); // Muestra la vista para cuando la placa no coincide con el id
-                alrtseg.add("Un usuario intentó salir con un vehiculo que no le pertenecepor la " + salida
-                        + ". Fecha y hora: " + fechaHora);
+                alrt = "Un usuario intentó salir con un vehiculo que no le pertenece por la ";
             }
-            blocSeg(salida);
+            alrt = alrt.concat(salida + ". Fecha y hora: " + fechaHora);
+            alrtseg.add(alrt + fechaHora + "\n"); // Guarda la alerta
+            blocSeg(salida, alrt);
             if (vanv.isVisible())
                 vanv.dispose();
             else if (wv.isVisible())
@@ -480,7 +467,7 @@ public class Edificio {
     public static void salPeat(String id, String salida) {
         // Salida vehicular
         boolean noTa = true, noInd = true;
-        String rol = "";
+        String rol = "", alrt = null;
 
         for (Indiv ind : arrie)
             if (id.equalsIgnoreCase(ind.getId())) {
@@ -515,15 +502,14 @@ public class Edificio {
         else {
             if (noTa) {
                 vni.setVisible(true);
-                alrtseg.add(
-                        "Un usuario que no existe intentó salir por la " + salida + ". Fecha y hora: "
-                                + fechaHora);
+                alrt = "Un usuario que no existe intentó salir por la ";
             } else if (noInd) {
                 ntnv.setVisible(true);
-                alrtseg.add("Un ususario que no tiene vehículo intentó salir por la peatonal de la " + salida
-                        + ". Fecha y hora: " + fechaHora);
+                alrt = "Un ususario que no tiene vehículo intentó salir por la peatonal de la ";
             }
-            blocSeg(salida);
+            alrt = alrt.concat(salida + ". Fecha y hora: " + fechaHora);
+            alrtseg.add(alrt + "\n");
+            blocSeg(salida, alrt);
             if (vni.isVisible())
                 vni.dispose();
             else if (ntnv.isVisible())
@@ -532,11 +518,11 @@ public class Edificio {
 
     }
 
-    public static void blocSeg(String puerta) {
+    public static void blocSeg(String puerta, String alrt) {
         // Lo que se hace cuando hay un bloqueo de seguridad
         boolean clear = false;
         int cont = 1;
-        String alerta = "\nAlerta de seguridad en la " + puerta + ":";
+        String alerta = "\nBloqueo de seguridad en la " + puerta + ":", corr = alrt;
         do {
             alrtbloc.add(alerta);
             alerta = "";
@@ -549,9 +535,14 @@ public class Edificio {
             } else {
                 alerta = alerta.concat(
                         "\nIntento de ingreso de contraseña fallido número " + cont + ". Fecha y hora: " + fechaHora);
+
                 cont++;
             }
+            corr = corr.concat(alerta + "\n");
         } while (!clear);
+        Correo c = new Correo();
+        c.createEmail(correo, asunto, corr);
+        c.sendEmail();
     }
 
     public static void show() {
